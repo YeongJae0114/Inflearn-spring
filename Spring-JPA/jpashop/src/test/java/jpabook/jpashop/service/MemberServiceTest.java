@@ -2,12 +2,12 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +19,7 @@ public class MemberServiceTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    // @Rollback(value = false) // 잘 들어갔는지 확인
     public void 회원가입() throws Exception{
         //given
         Member member = new Member();
@@ -38,8 +39,11 @@ public class MemberServiceTest {
         member2.setName("kim");
         //when
         memberService.join(member1);
-        memberService.join(member2);
-
+        try {
+            memberService.join(member2);
+        }catch (IllegalStateException e){
+            return;
+        }
         //then
         Assert.fail("예외가 발생해야 한다");
     }
