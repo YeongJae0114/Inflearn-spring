@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
 
 
 public class Main {
@@ -14,9 +16,11 @@ public class Main {
         EntityTransaction tx = em.getTransaction();
         tx.begin(); // 트랜잭션 시작
         try {
-            Member member = new Member();
-            em.persist(member); //Member 객체를 영속 상태로 만든 상태, db 저장은 X
+            Order order = new Order();
+            // 양방향 매핑관계
+            order.addOrderItem(new OrderItem());
 
+            em.persist(order);
 
             tx.commit(); //db에 저장
         }catch (Exception E){
