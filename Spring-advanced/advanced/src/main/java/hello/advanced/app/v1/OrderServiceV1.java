@@ -1,7 +1,7 @@
 package hello.advanced.app.v1;
 
 import hello.advanced.app.trace.TraceStatus;
-import hello.advanced.app.trace.helloTraceV1.HelloTraceV1;
+import hello.advanced.app.trace.helloTrace.HelloTraceV1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
