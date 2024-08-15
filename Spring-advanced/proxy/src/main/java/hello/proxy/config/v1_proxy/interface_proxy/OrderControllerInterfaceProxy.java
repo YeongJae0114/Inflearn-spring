@@ -6,7 +6,7 @@ import hello.proxy.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OrderControllerInterfaceProxy implements OrderControllerV1{
+public class OrderControllerInterfaceProxy implements OrderControllerV1 {
     private final OrderControllerV1 target;
     private final LogTrace logTrace;
 

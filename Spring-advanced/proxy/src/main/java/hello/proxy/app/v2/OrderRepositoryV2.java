@@ -1,8 +1,8 @@
 package hello.proxy.app.v2;
 
-import hello.proxy.app.v1.OrderRepositoryV1;
 
-public class OrderRepositoryV2 implements OrderRepositoryV1 {
+public class OrderRepositoryV2{
+
     public void save(String itemId) {
         // 저장로직
         if(itemId.equals("ex")){
